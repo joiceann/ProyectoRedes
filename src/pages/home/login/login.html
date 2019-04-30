@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-buttons start>
+          <button ion-button icon-only >
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-title>
+          Login 
+          <ion-icon name="wifi"></ion-icon>
+        </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
+      <ion-item>
+        <ion-label floating primary>Usuario</ion-label>
+        <ion-input [(ngModel)]="usuario" type="text" formControlName="usuario" id="usuario" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating primary>Clave</ion-label>
+        <ion-input [(ngModel)]="clave" type="password" formControlName="clave" id="clave" spellcheck="false" autocapitalize="off"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label > Restaurante?</ion-label>
+        <ion-checkbox [(ngModel)]="restaurante" formControlName="restaurante" id="restaurante" ></ion-checkbox>
+      </ion-item>
+      <div class="error" *ngIf="errormsg">
+        {{ errormsg }}
+      </div>
+  
+      <button ion-button type="submit" block primary outline [disabled]="!form.valid">Login</button>
+    </form>
+
+  </ion-list>
+</ion-content>
+
+
